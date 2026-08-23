@@ -1,5 +1,5 @@
 /* ==========================================================================
-   VS INFOSERVICE - Surrealism & Editorial Design System Controller
+   VS INFOSERVICE - Clean Light Studio Controller & Motion Physics
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initCustomCursor();
   initGSAPMotionFramework();
-  initExplodedSlider();
   initHeroSandbox();
   initChipOverclock();
   initProjectFilters();
@@ -48,17 +47,16 @@ function initGSAPMotionFramework() {
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // Editorial Text & Section Reveals
+  // Clean Text & Section Reveals
   const reveals = document.querySelectorAll('.motion-reveal');
   reveals.forEach(container => {
     const items = container.querySelectorAll('.motion-item');
     if (items.length) {
       gsap.fromTo(items, 
-        { y: 55, opacity: 0, rotationX: -12 },
+        { y: 50, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          rotationX: 0,
           duration: 1.1,
           stagger: 0.16,
           ease: "power4.out",
@@ -72,13 +70,13 @@ function initGSAPMotionFramework() {
     }
   });
 
-  // Staggered Motion Paper Cards
+  // Staggered Motion Cards
   const cardGrids = document.querySelectorAll('.projects-grid, .container');
   cardGrids.forEach(grid => {
     const cards = grid.querySelectorAll('.motion-card');
     if (cards.length) {
       gsap.fromTo(cards,
-        { y: 70, opacity: 0, scale: 0.94 },
+        { y: 60, opacity: 0, scale: 0.95 },
         {
           y: 0,
           opacity: 1,
@@ -95,22 +93,6 @@ function initGSAPMotionFramework() {
       );
     }
   });
-
-  // Hero Right Stage Reveal
-  const heroStage = document.querySelector('.hero-stage-container');
-  if (heroStage) {
-    gsap.fromTo(heroStage,
-      { x: 80, opacity: 0, rotationY: 15 },
-      {
-        x: 0,
-        opacity: 1,
-        rotationY: 0,
-        duration: 1.4,
-        ease: "power4.out",
-        delay: 0.3
-      }
-    );
-  }
 
   // Stat Counter Animations
   const counters = document.querySelectorAll('.counter-num');
@@ -140,35 +122,7 @@ function initGSAPMotionFramework() {
   });
 }
 
-/* --- 3. Live Interactive Exploded View Slider --- */
-function initExplodedSlider() {
-  const slider = document.getElementById('exploded-distance-slider');
-  const display = document.getElementById('exploded-percentage-display');
-  const resetBtn = document.getElementById('reset-exploded-btn');
-
-  if (!slider || !display) return;
-
-  slider.addEventListener('input', () => {
-    const val = parseFloat(slider.value);
-    const percentage = Math.round(val * 100);
-    display.textContent = `${percentage}% Morph`;
-
-    if (typeof window.setExplodeFactor === 'function') {
-      window.setExplodeFactor(val);
-    }
-  });
-
-  if (resetBtn) {
-    resetBtn.addEventListener('click', () => {
-      display.textContent = 'Auto Scroll Sync';
-      if (typeof window.clearManualExplode === 'function') {
-        window.clearManualExplode();
-      }
-    });
-  }
-}
-
-/* --- 4. Hero Interactive Tech Sandbox Tabs --- */
+/* --- 3. Hero Interactive Tech Sandbox Tabs --- */
 function initHeroSandbox() {
   const tabs = document.querySelectorAll('.sandbox-tab');
   const title = document.getElementById('sandbox-display-title');
@@ -179,12 +133,12 @@ function initHeroSandbox() {
 
   const contentMap = {
     ai: {
-      tag: 'AI ARCHITECTURE SUITE',
+      tag: 'AI AUTOMATION ENGINE',
       title: 'Real-time AI Model & Workflow Automation',
       body: `// Live AI Processing Output\nconst aiResult = await vsAI.generate({\n  model: "Neural-v4",\n  workflow: "Autonomous CRM Lead Nurturing",\n  status: "99.8% Efficiency Match Rate"\n});`
     },
     mobile: {
-      tag: 'MOBILE APP ENGINEERING',
+      tag: 'MOBILE APP PLATFORMS',
       title: 'iOS & Android Enterprise Fleet Control',
       body: `// Live Mobile Sync Pipeline\nconst mobileApp = new VSAppEngine({\n  platform: ["iOS", "Android"],\n  telemetry: "Real-time Fleet Tracking",\n  status: "Active 60 FPS Sync"\n});`
     },
@@ -204,7 +158,7 @@ function initHeroSandbox() {
       });
 
       tab.classList.add('active');
-      tab.style.background = 'var(--text-ebony)';
+      tab.style.background = 'var(--brand-blue)';
       tab.style.color = '#ffffff';
 
       const tabKey = tab.getAttribute('data-tab');
@@ -217,7 +171,7 @@ function initHeroSandbox() {
   });
 }
 
-/* --- 5. 3D Overclock Pulse Button --- */
+/* --- 4. Overclock Pulse Button --- */
 function initChipOverclock() {
   const btn = document.getElementById('chip-overclock-btn');
   const clockDisplay = document.getElementById('chip-clock-display');
@@ -227,18 +181,18 @@ function initChipOverclock() {
 
   btn.addEventListener('click', () => {
     clockDisplay.textContent = 'Clock Frequency: 5.4 GHz (EXTREME OVERCLOCK)';
-    clockDisplay.style.color = 'var(--accent-gold)';
+    clockDisplay.style.color = 'var(--brand-blue)';
     loadBar.style.width = '100%';
 
     setTimeout(() => {
       clockDisplay.textContent = 'Clock Frequency: 4.8 GHz (Turbo Active)';
-      clockDisplay.style.color = 'var(--text-gold)';
+      clockDisplay.style.color = 'var(--brand-blue)';
       loadBar.style.width = '88%';
     }, 2500);
   });
 }
 
-/* --- 6. Portfolio Category Filter Pills --- */
+/* --- 5. Portfolio Category Filter Pills --- */
 function initProjectFilters() {
   const filterPills = document.querySelectorAll('.project-filter-pill');
   const projectCards = document.querySelectorAll('.project-card');
@@ -254,7 +208,7 @@ function initProjectFilters() {
       });
 
       pill.classList.add('active');
-      pill.style.background = 'var(--text-ebony)';
+      pill.style.background = 'var(--brand-blue)';
       pill.style.color = '#ffffff';
 
       const filter = pill.getAttribute('data-filter');
@@ -271,7 +225,7 @@ function initProjectFilters() {
   });
 }
 
-/* --- 7. Interactive Methodology Pipeline Timeline --- */
+/* --- 6. Interactive Methodology Pipeline Timeline --- */
 function initProcessPipeline() {
   const stepCards = document.querySelectorAll('.process-step-card');
   if (!stepCards.length) return;
@@ -282,22 +236,22 @@ function initProcessPipeline() {
         c.classList.remove('active');
         const num = c.querySelector('div');
         if (num) {
-          num.style.background = 'var(--bg-cream)';
-          num.style.color = 'var(--text-ebony)';
+          num.style.background = 'var(--bg-soft)';
+          num.style.color = 'var(--text-main)';
         }
       });
 
       card.classList.add('active');
       const activeNum = card.querySelector('div');
       if (activeNum) {
-        activeNum.style.background = 'var(--text-ebony)';
+        activeNum.style.background = 'var(--brand-blue)';
         activeNum.style.color = '#ffffff';
       }
     });
   });
 }
 
-/* --- 8. Pricing Calculator Monthly / Annual Toggle --- */
+/* --- 7. Pricing Calculator Monthly / Annual Toggle --- */
 function initPricingToggle() {
   const toggle = document.getElementById('pricing-toggle-switch');
   const starterPrice = document.getElementById('price-starter');
@@ -316,7 +270,7 @@ function initPricingToggle() {
   });
 }
 
-/* --- 9. Live FAQ Search Filter --- */
+/* --- 8. Live FAQ Search Filter --- */
 function initFAQSearch() {
   const searchInput = document.getElementById('faq-search-input');
   const faqItems = document.querySelectorAll('.faq-item');
@@ -339,7 +293,7 @@ function initFAQSearch() {
   });
 }
 
-/* --- 10. FAQ Accordion Toggles --- */
+/* --- 9. FAQ Accordion Toggles --- */
 function initFAQAccordion() {
   const items = document.querySelectorAll('.faq-item');
   if (!items.length) return;
@@ -358,7 +312,7 @@ function initFAQAccordion() {
   });
 }
 
-/* --- 11. Contact Form AJAX Submission --- */
+/* --- 10. Contact Form AJAX Submission --- */
 function initContactForm() {
   const form = document.getElementById('contact-form');
   const statusMsg = document.getElementById('form-status-msg');
@@ -367,7 +321,7 @@ function initContactForm() {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     statusMsg.style.display = 'block';
-    statusMsg.style.color = 'var(--text-gold)';
+    statusMsg.style.color = 'var(--brand-blue)';
     statusMsg.textContent = 'Sending message...';
 
     const formData = new FormData(form);
@@ -384,7 +338,7 @@ function initContactForm() {
         statusMsg.textContent = data.message;
         form.reset();
       } else {
-        statusMsg.style.color = 'var(--text-gold)';
+        statusMsg.style.color = 'var(--brand-blue)';
         statusMsg.textContent = data.message;
       }
     } catch (err) {
