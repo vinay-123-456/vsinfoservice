@@ -1,7 +1,6 @@
 /* ==========================================================================
-   VS INFOSERVICE - The Interactive Digital Canvas (Brew District 24 Style)
-   Kinetic Typography, Continuous Object Morphing & 3D Product Flip Physics
-   Dedicated #explodedview Section & Live Telemetry Controls
+   VS INFOSERVICE - Motion Animation Framework & 3D Interactive Canvas
+   GSAP ScrollTrigger Motion Physics, Kinetic Typography & Parallax Shifts
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Syne:wght@700;800;900&display=swap');
@@ -200,6 +199,16 @@ html, body {
   background: rgba(6, 10, 18, 0.35);
 }
 
+/* --- Motion Framework Animation Classes --- */
+.motion-reveal {
+  will-change: transform, opacity;
+}
+
+.motion-card {
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+}
+
 /* --- Exploded View Telemetry Slider --- */
 .exploded-slider-container {
   margin-top: 1.5rem;
@@ -223,7 +232,6 @@ html, body {
   border-radius: 24px;
   box-shadow: var(--glass-shadow);
   transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.4s ease;
-  will-change: transform;
 }
 
 .glass-card:hover {

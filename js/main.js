@@ -1,11 +1,12 @@
 /* ==========================================================================
-   VS INFOSERVICE - Brew District 24 Interactive Canvas Controller
+   VS INFOSERVICE - Motion Framework Animation Controller (GSAP ScrollTrigger)
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
   initCustomCursor();
+  initGSAPMotionFramework();
   initExplodedSlider();
   initHeroSandbox();
   initChipOverclock();
@@ -41,7 +42,105 @@ function initCustomCursor() {
   animateCursor();
 }
 
-/* --- 2. Live Interactive Exploded View Slider --- */
+/* --- 2. GSAP ScrollTrigger Motion Framework --- */
+function initGSAPMotionFramework() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Kinetic Text & Section Reveals
+  const reveals = document.querySelectorAll('.motion-reveal');
+  reveals.forEach(container => {
+    const items = container.querySelectorAll('.motion-item');
+    if (items.length) {
+      gsap.fromTo(items, 
+        { y: 55, opacity: 0, rotationX: -12 },
+        {
+          y: 0,
+          opacity: 1,
+          rotationX: 0,
+          duration: 1.1,
+          stagger: 0.16,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: container,
+            start: "top 82%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    }
+  });
+
+  // Staggered Motion Glass Cards
+  const cardGrids = document.querySelectorAll('.projects-grid, .container');
+  cardGrids.forEach(grid => {
+    const cards = grid.querySelectorAll('.motion-card');
+    if (cards.length) {
+      gsap.fromTo(cards,
+        { y: 70, opacity: 0, scale: 0.94 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 1.2,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: grid,
+            start: "top 80%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    }
+  });
+
+  // Hero Right Stage Reveal
+  const heroStage = document.querySelector('.hero-stage-container');
+  if (heroStage) {
+    gsap.fromTo(heroStage,
+      { x: 80, opacity: 0, rotationY: 15 },
+      {
+        x: 0,
+        opacity: 1,
+        rotationY: 0,
+        duration: 1.4,
+        ease: "power4.out",
+        delay: 0.3
+      }
+    );
+  }
+
+  // Stat Counter Animations
+  const counters = document.querySelectorAll('.counter-num');
+  counters.forEach(counter => {
+    const targetVal = parseFloat(counter.getAttribute('data-target'));
+    if (isNaN(targetVal)) return;
+
+    ScrollTrigger.create({
+      trigger: counter,
+      start: "top 85%",
+      onEnter: () => {
+        gsap.to(counter, {
+          innerText: targetVal,
+          duration: 2.2,
+          ease: "power2.out",
+          snap: { innerText: targetVal > 50 ? 1 : 0.1 },
+          onUpdate: function () {
+            if (targetVal === 99.8) {
+              counter.innerText = parseFloat(counter.innerText).toFixed(1) + '%';
+            } else if (targetVal === 150) {
+              counter.innerText = Math.round(parseFloat(counter.innerText)) + '+';
+            }
+          }
+        });
+      }
+    });
+  });
+}
+
+/* --- 3. Live Interactive Exploded View Slider --- */
 function initExplodedSlider() {
   const slider = document.getElementById('exploded-distance-slider');
   const display = document.getElementById('exploded-percentage-display');
@@ -69,7 +168,7 @@ function initExplodedSlider() {
   }
 }
 
-/* --- 3. Hero Interactive Tech Sandbox Tabs --- */
+/* --- 4. Hero Interactive Tech Sandbox Tabs --- */
 function initHeroSandbox() {
   const tabs = document.querySelectorAll('.sandbox-tab');
   const title = document.getElementById('sandbox-display-title');
@@ -118,7 +217,7 @@ function initHeroSandbox() {
   });
 }
 
-/* --- 4. 3D Product Flip Overclock Pulse Button --- */
+/* --- 5. 3D Product Flip Overclock Pulse Button --- */
 function initChipOverclock() {
   const btn = document.getElementById('chip-overclock-btn');
   const clockDisplay = document.getElementById('chip-clock-display');
@@ -139,7 +238,7 @@ function initChipOverclock() {
   });
 }
 
-/* --- 5. Portfolio Category Filter Pills --- */
+/* --- 6. Portfolio Category Filter Pills --- */
 function initProjectFilters() {
   const filterPills = document.querySelectorAll('.project-filter-pill');
   const projectCards = document.querySelectorAll('.project-card');
@@ -172,7 +271,7 @@ function initProjectFilters() {
   });
 }
 
-/* --- 6. Interactive Methodology Pipeline Timeline --- */
+/* --- 7. Interactive Methodology Pipeline Timeline --- */
 function initProcessPipeline() {
   const stepCards = document.querySelectorAll('.process-step-card');
   if (!stepCards.length) return;
@@ -198,7 +297,7 @@ function initProcessPipeline() {
   });
 }
 
-/* --- 7. Pricing Calculator Monthly / Annual Toggle --- */
+/* --- 8. Pricing Calculator Monthly / Annual Toggle --- */
 function initPricingToggle() {
   const toggle = document.getElementById('pricing-toggle-switch');
   const starterPrice = document.getElementById('price-starter');
@@ -217,7 +316,7 @@ function initPricingToggle() {
   });
 }
 
-/* --- 8. Live FAQ Search Filter --- */
+/* --- 9. Live FAQ Search Filter --- */
 function initFAQSearch() {
   const searchInput = document.getElementById('faq-search-input');
   const faqItems = document.querySelectorAll('.faq-item');
@@ -240,7 +339,7 @@ function initFAQSearch() {
   });
 }
 
-/* --- 9. FAQ Accordion Toggles --- */
+/* --- 10. FAQ Accordion Toggles --- */
 function initFAQAccordion() {
   const items = document.querySelectorAll('.faq-item');
   if (!items.length) return;
@@ -259,7 +358,7 @@ function initFAQAccordion() {
   });
 }
 
-/* --- 10. Contact Form AJAX Submission --- */
+/* --- 11. Contact Form AJAX Submission --- */
 function initContactForm() {
   const form = document.getElementById('contact-form');
   const statusMsg = document.getElementById('form-status-msg');
