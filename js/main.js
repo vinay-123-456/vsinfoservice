@@ -1,5 +1,5 @@
 /* ==========================================================================
-   VS INFOSERVICE - Motion Framework Animation Controller (GSAP ScrollTrigger)
+   VS INFOSERVICE - Surrealism & Editorial Design System Controller
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -48,7 +48,7 @@ function initGSAPMotionFramework() {
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // Kinetic Text & Section Reveals
+  // Editorial Text & Section Reveals
   const reveals = document.querySelectorAll('.motion-reveal');
   reveals.forEach(container => {
     const items = container.querySelectorAll('.motion-item');
@@ -72,7 +72,7 @@ function initGSAPMotionFramework() {
     }
   });
 
-  // Staggered Motion Glass Cards
+  // Staggered Motion Paper Cards
   const cardGrids = document.querySelectorAll('.projects-grid, .container');
   cardGrids.forEach(grid => {
     const cards = grid.querySelectorAll('.motion-card');
@@ -151,7 +151,7 @@ function initExplodedSlider() {
   slider.addEventListener('input', () => {
     const val = parseFloat(slider.value);
     const percentage = Math.round(val * 100);
-    display.textContent = `${percentage}% Exploded`;
+    display.textContent = `${percentage}% Morph`;
 
     if (typeof window.setExplodeFactor === 'function') {
       window.setExplodeFactor(val);
@@ -179,12 +179,12 @@ function initHeroSandbox() {
 
   const contentMap = {
     ai: {
-      tag: 'AI AUTOMATION ENGINE',
+      tag: 'AI ARCHITECTURE SUITE',
       title: 'Real-time AI Model & Workflow Automation',
       body: `// Live AI Processing Output\nconst aiResult = await vsAI.generate({\n  model: "Neural-v4",\n  workflow: "Autonomous CRM Lead Nurturing",\n  status: "99.8% Efficiency Match Rate"\n});`
     },
     mobile: {
-      tag: 'MOBILE APP PLATFORMS',
+      tag: 'MOBILE APP ENGINEERING',
       title: 'iOS & Android Enterprise Fleet Control',
       body: `// Live Mobile Sync Pipeline\nconst mobileApp = new VSAppEngine({\n  platform: ["iOS", "Android"],\n  telemetry: "Real-time Fleet Tracking",\n  status: "Active 60 FPS Sync"\n});`
     },
@@ -204,8 +204,8 @@ function initHeroSandbox() {
       });
 
       tab.classList.add('active');
-      tab.style.background = 'var(--gradient-cyan)';
-      tab.style.color = '#060a12';
+      tab.style.background = 'var(--text-ebony)';
+      tab.style.color = '#ffffff';
 
       const tabKey = tab.getAttribute('data-tab');
       if (contentMap[tabKey]) {
@@ -217,7 +217,7 @@ function initHeroSandbox() {
   });
 }
 
-/* --- 5. 3D Product Flip Overclock Pulse Button --- */
+/* --- 5. 3D Overclock Pulse Button --- */
 function initChipOverclock() {
   const btn = document.getElementById('chip-overclock-btn');
   const clockDisplay = document.getElementById('chip-clock-display');
@@ -227,12 +227,12 @@ function initChipOverclock() {
 
   btn.addEventListener('click', () => {
     clockDisplay.textContent = 'Clock Frequency: 5.4 GHz (EXTREME OVERCLOCK)';
-    clockDisplay.style.color = 'var(--primary-cyan)';
+    clockDisplay.style.color = 'var(--accent-gold)';
     loadBar.style.width = '100%';
 
     setTimeout(() => {
       clockDisplay.textContent = 'Clock Frequency: 4.8 GHz (Turbo Active)';
-      clockDisplay.style.color = 'var(--primary-ice)';
+      clockDisplay.style.color = 'var(--text-gold)';
       loadBar.style.width = '88%';
     }, 2500);
   });
@@ -249,13 +249,13 @@ function initProjectFilters() {
     pill.addEventListener('click', () => {
       filterPills.forEach(p => {
         p.classList.remove('active');
-        p.style.background = 'rgba(255,255,255,0.06)';
+        p.style.background = 'var(--bg-surface)';
         p.style.color = 'var(--text-muted)';
       });
 
       pill.classList.add('active');
-      pill.style.background = 'var(--gradient-cyan)';
-      pill.style.color = '#060a12';
+      pill.style.background = 'var(--text-ebony)';
+      pill.style.color = '#ffffff';
 
       const filter = pill.getAttribute('data-filter');
 
@@ -282,16 +282,16 @@ function initProcessPipeline() {
         c.classList.remove('active');
         const num = c.querySelector('div');
         if (num) {
-          num.style.background = 'rgba(255,255,255,0.1)';
-          num.style.color = '#ffffff';
+          num.style.background = 'var(--bg-cream)';
+          num.style.color = 'var(--text-ebony)';
         }
       });
 
       card.classList.add('active');
       const activeNum = card.querySelector('div');
       if (activeNum) {
-        activeNum.style.background = 'var(--gradient-cyan)';
-        activeNum.style.color = '#060a12';
+        activeNum.style.background = 'var(--text-ebony)';
+        activeNum.style.color = '#ffffff';
       }
     });
   });
@@ -367,7 +367,7 @@ function initContactForm() {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     statusMsg.style.display = 'block';
-    statusMsg.style.color = 'var(--primary-cyan)';
+    statusMsg.style.color = 'var(--text-gold)';
     statusMsg.textContent = 'Sending message...';
 
     const formData = new FormData(form);
@@ -380,15 +380,15 @@ function initContactForm() {
       const data = await response.json();
 
       if (data.status === 'success') {
-        statusMsg.style.color = 'var(--primary-emerald)';
+        statusMsg.style.color = '#10b981';
         statusMsg.textContent = data.message;
         form.reset();
       } else {
-        statusMsg.style.color = 'var(--primary-cyan)';
+        statusMsg.style.color = 'var(--text-gold)';
         statusMsg.textContent = data.message;
       }
     } catch (err) {
-      statusMsg.style.color = 'var(--primary-emerald)';
+      statusMsg.style.color = '#10b981';
       statusMsg.textContent = 'Thank you! Your message has been sent successfully.';
       form.reset();
     }

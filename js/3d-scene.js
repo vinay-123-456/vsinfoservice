@@ -1,6 +1,6 @@
 /* ==========================================================================
-   VS INFOSERVICE - Brew District 24 3D Continuous Flip & Exploded View Engine
-   Interactive Exploded View Telemetry & Scroll Morphing Physics
+   VS INFOSERVICE - Surrealist 3D Sculpture Engine (Light Alabaster Studio)
+   Organic Dreamlike Geometry, Champagne Gold Shaders & Light UI Palette (#fbf9f5)
    ========================================================================== */
 
 (function () {
@@ -9,8 +9,8 @@
   if (typeof THREE === 'undefined') return;
 
   let scene, camera, renderer;
-  let heroProductMesh, internalLayersGroup, particleMatrix, waveGrid;
-  let pointLightCyan, pointLightBlue, pointLightEmerald, ambientLight;
+  let surrealSculptureGroup, goldTorusKnot, porcelainSphere, floatingGeomsGroup, particleCloud, waveGrid;
+  let pointLightGold, pointLightSapphire, pointLightPearl, ambientLight;
 
   let mouseX = 0, mouseY = 0;
   let targetMouseX = 0, targetMouseY = 0;
@@ -18,44 +18,47 @@
   // Lerped scroll progress state (0.0 to 1.0)
   let currentScrollProgress = 0;
   let targetScrollProgress = 0;
-  let manualExplodeFactor = null; // Interactive override slider factor
+  let manualExplodeFactor = null;
 
   const container = document.getElementById('webgl-container');
   if (!container) return;
 
   function init() {
     scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x060a12, 0.0012);
+    scene.background = new THREE.Color(0xfbf9f5); // Soft Alabaster Studio
+    scene.fog = new THREE.FogExp2(0xfbf9f5, 0.0012);
 
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(0, 0, 34);
 
-    renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "high-performance" });
+    renderer = new THREE.WebGLRenderer({ alpha: false, antialias: true, powerPreference: "high-performance" });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.4;
+    renderer.toneMappingExposure = 1.3;
     container.appendChild(renderer.domElement);
 
-    // Multi-Tone Lighting
-    ambientLight = new THREE.AmbientLight(0xffffff, 0.85);
+    // Studio Ambient & Champagne Lighting
+    ambientLight = new THREE.AmbientLight(0xffffff, 0.92);
     scene.add(ambientLight);
 
-    pointLightCyan = new THREE.PointLight(0x00f2fe, 5.5, 130);
-    pointLightCyan.position.set(25, 20, 20);
-    scene.add(pointLightCyan);
+    pointLightGold = new THREE.PointLight(0xd4af37, 5.0, 130); // Metallic Champagne Gold
+    pointLightGold.position.set(25, 20, 20);
+    scene.add(pointLightGold);
 
-    pointLightBlue = new THREE.PointLight(0x0066cc, 5.5, 130);
-    pointLightBlue.position.set(-25, -20, -10);
-    scene.add(pointLightBlue);
+    pointLightSapphire = new THREE.PointLight(0x0066cc, 4.5, 130); // Cobalt Sapphire
+    pointLightSapphire.position.set(-25, -20, -10);
+    scene.add(pointLightSapphire);
 
-    pointLightEmerald = new THREE.PointLight(0x00ffaa, 4.5, 100);
-    pointLightEmerald.position.set(0, 25, -15);
-    scene.add(pointLightEmerald);
+    pointLightPearl = new THREE.PointLight(0xe07a5f, 3.5, 100); // Ethereal Rose
+    pointLightPearl.position.set(0, 25, -15);
+    scene.add(pointLightPearl);
 
-    // Build 3D Product & Particle Objects
-    createContinuousProduct();
-    createParticleMatrix();
+    // Build 3D Surrealist Objects
+    createSurrealSculpture();
+    createParticleConstellation();
     createCyberWaveGrid();
 
     // Event Listeners
@@ -68,64 +71,79 @@
   }
 
   /* --------------------------------------------------------------------------
-     1. Hero 3D SaaS / Hardware Enclosure Product
+     1. Surrealist Torus Knot & Porcelain Assembly
      -------------------------------------------------------------------------- */
-  function createContinuousProduct() {
-    heroProductMesh = new THREE.Group();
+  function createSurrealSculpture() {
+    surrealSculptureGroup = new THREE.Group();
 
-    // Base Enclosure Frame
-    const frameGeo = new THREE.BoxGeometry(13.5, 8.5, 0.4);
-    const frameMat = new THREE.MeshStandardMaterial({
-      color: 0x0f172a,
-      roughness: 0.2,
-      metalness: 0.5
+    // Polished Champagne Gold Torus Knot
+    const torusGeo = new THREE.TorusKnotGeometry(5.2, 1.3, 128, 32);
+    const goldMat = new THREE.MeshStandardMaterial({
+      color: 0xd4af37,
+      roughness: 0.15,
+      metalness: 0.85,
+      envMapIntensity: 1.5
     });
-    const frame = new THREE.Mesh(frameGeo, frameMat);
-    heroProductMesh.add(frame);
+    goldTorusKnot = new THREE.Mesh(torusGeo, goldMat);
+    goldTorusKnot.castShadow = true;
+    goldTorusKnot.receiveShadow = true;
+    surrealSculptureGroup.add(goldTorusKnot);
 
-    // Wireframe Cyan Edge Glow
-    const wireGeo = new THREE.WireframeGeometry(frameGeo);
-    frame.add(new THREE.LineSegments(wireGeo, new THREE.LineBasicMaterial({ color: 0x00f2fe })));
+    // Central Smooth Porcelain Core Sphere
+    const sphereGeo = new THREE.SphereGeometry(3.2, 64, 64);
+    const sphereMat = new THREE.MeshPhongMaterial({
+      color: 0xffffff,
+      emissive: 0xf4efe6,
+      emissiveIntensity: 0.5,
+      shininess: 140,
+      transparent: true,
+      opacity: 0.88
+    });
+    porcelainSphere = new THREE.Mesh(sphereGeo, sphereMat);
+    surrealSculptureGroup.add(porcelainSphere);
 
-    // Internal Connected Layers (3D Exploded View Physics)
-    internalLayersGroup = new THREE.Group();
-    const layerColors = [0x00f2fe, 0x0066cc, 0x00ffaa];
-    for (let i = 0; i < 3; i++) {
-      const layerGeo = new THREE.BoxGeometry(11.5, 6.8, 0.15);
-      const layerMat = new THREE.MeshPhongMaterial({
-        color: layerColors[i],
-        transparent: true,
-        opacity: 0.85,
-        shininess: 120
-      });
-      const layer = new THREE.Mesh(layerGeo, layerMat);
-      layer.position.set(0, 0, -i * 2.5);
-      internalLayersGroup.add(layer);
+    // Floating Geometric Surreal Forms (Icosahedrons & Rings)
+    floatingGeomsGroup = new THREE.Group();
+    const icoGeo = new THREE.IcosahedronGeometry(1.6, 0);
+    const sapphireMat = new THREE.MeshStandardMaterial({
+      color: 0x0066cc,
+      roughness: 0.2,
+      metalness: 0.7
+    });
+
+    for (let i = 0; i < 4; i++) {
+      const ico = new THREE.Mesh(icoGeo, sapphireMat);
+      ico.position.set(
+        Math.cos(i * Math.PI / 2) * 8.5,
+        Math.sin(i * Math.PI / 2) * 5.5,
+        (i % 2 === 0 ? 3 : -3)
+      );
+      floatingGeomsGroup.add(ico);
     }
-    heroProductMesh.add(internalLayersGroup);
+    surrealSculptureGroup.add(floatingGeomsGroup);
 
-    heroProductMesh.position.set(9, 0, 0);
-    heroProductMesh.rotation.x = Math.PI / 6;
-    heroProductMesh.rotation.y = Math.PI / 5;
+    surrealSculptureGroup.position.set(9, 0, 0);
+    surrealSculptureGroup.rotation.x = Math.PI / 6;
+    surrealSculptureGroup.rotation.y = Math.PI / 4;
 
-    scene.add(heroProductMesh);
+    scene.add(surrealSculptureGroup);
   }
 
   /* --------------------------------------------------------------------------
-     2. Particle Matrix
+     2. Ethereal Particle Constellation Network
      -------------------------------------------------------------------------- */
-  function createParticleMatrix() {
-    const count = 2000;
+  function createParticleConstellation() {
+    const count = 1800;
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
 
     const palette = [
-      new THREE.Color(0x00f2fe),
-      new THREE.Color(0x0066cc),
-      new THREE.Color(0x00ffaa),
-      new THREE.Color(0x38bdf8),
-      new THREE.Color(0xffffff)
+      new THREE.Color(0xd4af37), // Champagne Gold
+      new THREE.Color(0x0066cc), // Cobalt Sapphire
+      new THREE.Color(0x00b4d8), // Pearl Cyan
+      new THREE.Color(0x0f172a), // Ebony Slate
+      new THREE.Color(0xffffff)  // Pure Porcelain White
     ];
 
     for (let i = 0; i < count * 3; i += 3) {
@@ -143,15 +161,14 @@
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
     const material = new THREE.PointsMaterial({
-      size: 0.4,
+      size: 0.38,
       vertexColors: true,
       transparent: true,
-      opacity: 0.85,
-      blending: THREE.AdditiveBlending
+      opacity: 0.75
     });
 
-    particleMatrix = new THREE.Points(geometry, material);
-    scene.add(particleMatrix);
+    particleCloud = new THREE.Points(geometry, material);
+    scene.add(particleCloud);
   }
 
   /* --------------------------------------------------------------------------
@@ -160,10 +177,10 @@
   function createCyberWaveGrid() {
     const gridGeo = new THREE.PlaneGeometry(160, 160, 40, 40);
     const gridMat = new THREE.MeshBasicMaterial({
-      color: 0x00f2fe,
+      color: 0xd4af37,
       wireframe: true,
       transparent: true,
-      opacity: 0.16
+      opacity: 0.14
     });
     waveGrid = new THREE.Mesh(gridGeo, gridMat);
     waveGrid.rotation.x = -Math.PI / 2;
@@ -172,7 +189,7 @@
   }
 
   /* --------------------------------------------------------------------------
-     4. Interactive Exploded View API Hooks
+     4. Interactive API Hooks
      -------------------------------------------------------------------------- */
   window.setExplodeFactor = function (val) {
     manualExplodeFactor = parseFloat(val);
@@ -183,7 +200,7 @@
   };
 
   /* --------------------------------------------------------------------------
-     5. Event Handlers & Animation Physics Loop
+     5. Surrealist Morphing Loop
      -------------------------------------------------------------------------- */
   function onMouseMove(event) {
     targetMouseX = (event.clientX - window.innerWidth / 2) * 0.0006;
@@ -214,33 +231,30 @@
     const scrollFactor = Math.sin(p * Math.PI);
     const morphFactor = (manualExplodeFactor !== null) ? manualExplodeFactor : scrollFactor;
 
-    /* --- 3D PRODUCT FLIP & EXPLODED LAYER PHYSICS --- */
-    if (heroProductMesh) {
-      heroProductMesh.rotation.x = (Math.PI / 6) + (p * Math.PI * 4);
-      heroProductMesh.rotation.y = (Math.PI / 5) + (p * Math.PI * 6);
-      heroProductMesh.rotation.z = Math.sin(p * Math.PI * 2) * 0.6;
+    /* --- SURREALIST SCULPTURE MORPHING PHYSICS --- */
+    if (surrealSculptureGroup) {
+      surrealSculptureGroup.rotation.x = (Math.PI / 6) + (p * Math.PI * 3);
+      surrealSculptureGroup.rotation.y = (Math.PI / 4) + (p * Math.PI * 5);
 
       const targetX = THREE.MathUtils.lerp(9, -9, Math.sin(p * Math.PI));
       const targetY = THREE.MathUtils.lerp(0, -2, Math.cos(p * Math.PI));
-      const targetZ = THREE.MathUtils.lerp(0, 12, morphFactor);
+      const targetZ = THREE.MathUtils.lerp(0, 10, morphFactor);
 
-      heroProductMesh.position.x = targetX + (mouseX * 14);
-      heroProductMesh.position.y = targetY - (mouseY * 14);
-      heroProductMesh.position.z = targetZ;
+      surrealSculptureGroup.position.x = targetX + (mouseX * 14);
+      surrealSculptureGroup.position.y = targetY - (mouseY * 14);
+      surrealSculptureGroup.position.z = targetZ;
     }
 
-    // Exploded Layer Disassembly
-    if (internalLayersGroup) {
-      internalLayersGroup.children.forEach((layer, idx) => {
-        layer.position.z = -idx * (2.5 + morphFactor * 5.5);
-        layer.rotation.z = idx * morphFactor * 0.55;
+    if (floatingGeomsGroup) {
+      floatingGeomsGroup.children.forEach((child, idx) => {
+        child.position.x = Math.cos(idx * Math.PI / 2 + p * Math.PI * 2) * (8.5 + morphFactor * 6.0);
+        child.rotation.y = Date.now() * 0.001 * (idx + 1);
       });
     }
 
-    // Particle Matrix Disassembly & Re-assembly
-    if (particleMatrix) {
-      particleMatrix.rotation.y = p * Math.PI * 2.5 + (Date.now() * 0.0003);
-      particleMatrix.scale.setScalar(1 + morphFactor * 0.7);
+    if (particleCloud) {
+      particleCloud.rotation.y = p * Math.PI * 2.5 + (Date.now() * 0.0003);
+      particleCloud.scale.setScalar(1 + morphFactor * 0.6);
     }
 
     if (waveGrid) {
