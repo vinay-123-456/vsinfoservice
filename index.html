@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VS INFOSERVICE | Interactive Digital Canvas & AI Studio</title>
-  <meta name="description" content="VS INFOSERVICE is a modern technology studio crafting custom web applications, mobile apps, e-commerce, and AI automation solutions curated with continuous 3D digital experiences.">
+  <title>VS INFOSERVICE | Interactive Digital Canvas & 3D Exploded View Engine</title>
+  <meta name="description" content="VS INFOSERVICE is a modern technology studio crafting custom web applications, mobile apps, e-commerce, and AI automation solutions curated with continuous 3D digital experiences and exploded view physics.">
   <meta name="keywords" content="VS Infoservice, Web Development, Mobile App Development, Businessbox, Digital Business Card, Vinay Shah, Software Company Mumbai">
   <meta name="author" content="VS INFOSERVICE">
 
   <!-- Open Graph Meta -->
-  <meta property="og:title" content="VS INFOSERVICE | Interactive Digital Canvas">
-  <meta property="og:description" content="Modern digital solutions engineered with continuous 3D product transformations.">
+  <meta property="og:title" content="VS INFOSERVICE | Interactive Digital Canvas & 3D Exploded View Engine">
+  <meta property="og:description" content="Modern digital solutions engineered with continuous 3D product transformations and exploded view physics.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://vsinfoservice.in/">
 
@@ -34,7 +34,7 @@
   <!-- Persistent 3D WebGL Background Canvas -->
   <div id="webgl-container"></div>
 
-  <!-- Navigation Bar -->
+  <!-- Navigation Bar with #explodedview Anchor -->
   <header>
     <nav class="navbar" id="navbar">
       <a href="#hero" class="navbar-brand">
@@ -47,6 +47,7 @@
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#services" class="nav-link">Services</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#explodedview" class="nav-link">Exploded View</a></li>
         <li><a href="#process" class="nav-link">Methodology</a></li>
         <li><a href="#pricing" class="nav-link">Pricing</a></li>
         <li><a href="#faq" class="nav-link">F.A.Q</a></li>
@@ -88,9 +89,9 @@
                 <div class="btn-icon-badge"><i class="bi bi-arrow-right"></i></div>
               </a>
 
-              <a href="#projects" class="btn-kinetic" style="background: transparent; border: 1px solid var(--border-glass); color: var(--text-main); box-shadow: none;">
-                <span>View Portfolio</span>
-                <div class="btn-icon-badge" style="background: rgba(255,255,255,0.15); color: #fff;"><i class="bi bi-grid-fill"></i></div>
+              <a href="#explodedview" class="btn-kinetic" style="background: transparent; border: 1px solid var(--border-glass); color: var(--text-main); box-shadow: none;">
+                <span>View Exploded View</span>
+                <div class="btn-icon-badge" style="background: rgba(255,255,255,0.15); color: #fff;"><i class="bi bi-layers-fill"></i></div>
               </a>
             </div>
 
@@ -162,45 +163,52 @@ const aiResult = await vsAI.generate({
       </div>
     </section>
 
-    <!-- ==================== BREW DISTRICT 24 3D PRODUCT FLIP SHOWCASE ==================== -->
-    <section id="scroll-showcase" class="section">
+    <!-- ==================== DEDICATED #EXPLODEDVIEW SECTION ==================== -->
+    <section id="explodedview" class="section">
       <div class="container">
-        <div class="glass-card" style="padding: 3.5rem; border-radius: 28px;">
+        <div class="glass-card" style="padding: 3.5rem; border-radius: 28px; border-color: var(--border-glow);">
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
             <div>
-              <div class="kinetic-badge"><i class="bi bi-box-seam-fill"></i> CONTINUOUS 3D OBJECT MORPHING</div>
-              <h2 style="font-family: var(--font-heading); font-size: 2.6rem; margin-bottom: 1rem;">Brew District 24 Style <span class="gradient-text">3D Product Flip</span></h2>
+              <div class="kinetic-badge"><i class="bi bi-layers-half"></i> DEDICATED 3D EXPLODED VIEW TELEMETRY</div>
+              <h2 style="font-family: var(--font-heading); font-size: 2.6rem; margin-bottom: 1rem;">Interactive <span class="gradient-text">Exploded View Engine</span></h2>
               <p style="color: var(--text-muted); font-size: 1.08rem; margin-bottom: 1.75rem; line-height: 1.7;">
-                Scroll down to watch our 3D Hardware/SaaS Enclosure <strong>3D Flip 720°, split into Igloo particle matrix layers</strong>, and <strong>magnetically re-assemble</strong> into next-stage digital products as you scroll!
+                Use the interactive slider below to manually <strong>Disassemble & Re-assemble</strong> our 3D Hardware/SaaS Enclosure into parallel silicon circuit layers and floating Igloo particle matrix cloud in real-time!
               </p>
-              <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
-                <div style="padding: 0.75rem 1.25rem; border-radius: 14px; background: rgba(0, 242, 254, 0.15); border: 1px solid rgba(0, 242, 254, 0.35); color: var(--primary-cyan); font-weight: 700; font-size: 0.9rem;">
-                  <i class="bi bi-arrow-repeat"></i> 720° Continuous Product Flip
+
+              <!-- Live Exploded Telemetry Range Slider -->
+              <div class="exploded-slider-container">
+                <div style="display: flex; justify-content: space-between; font-size: 0.88rem; font-weight: 700; color: var(--primary-cyan); margin-bottom: 0.6rem;">
+                  <span><i class="bi bi-sliders"></i> Disassembly Distance:</span>
+                  <span id="exploded-percentage-display">50% Exploded</span>
                 </div>
-                <div style="padding: 0.75rem 1.25rem; border-radius: 14px; background: rgba(0, 255, 170, 0.15); border: 1px solid rgba(0, 255, 170, 0.35); color: var(--primary-emerald); font-weight: 700; font-size: 0.9rem;">
-                  <i class="bi bi-magnet-fill"></i> Particle Matrix Assembly
-                </div>
+                <input type="range" id="exploded-distance-slider" class="exploded-range-input" min="0" max="1" step="0.01" value="0.5">
               </div>
 
-              <!-- Interactive Overclock Trigger Button -->
-              <button id="chip-overclock-btn" class="btn-kinetic">
-                <i class="bi bi-speedometer"></i>
-                <span>Trigger Overclock Pulse</span>
-                <div class="btn-icon-badge"><i class="bi bi-lightning-fill"></i></div>
-              </button>
+              <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+                <button id="chip-overclock-btn" class="btn-kinetic">
+                  <i class="bi bi-speedometer"></i>
+                  <span>Trigger Overclock Pulse</span>
+                  <div class="btn-icon-badge"><i class="bi bi-lightning-fill"></i></div>
+                </button>
+
+                <button id="reset-exploded-btn" class="btn-kinetic" style="background: transparent; border: 1px solid var(--border-glass); color: #fff; box-shadow: none;">
+                  <i class="bi bi-arrow-counterclockwise"></i>
+                  <span>Auto Scroll Sync</span>
+                </button>
+              </div>
             </div>
 
             <div>
               <div style="background: rgba(10, 16, 29, 0.95); border: 1px solid var(--border-glow); border-radius: 24px; padding: 2.25rem; text-align: center;">
                 <div style="width: 76px; height: 76px; border-radius: 50%; background: var(--gradient-cyan); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem auto; box-shadow: 0 0 30px rgba(0, 242, 254, 0.65);">
-                  <i class="bi bi-box" style="font-size: 2.4rem; color: #060a12;"></i>
+                  <i class="bi bi-cpu" style="font-size: 2.4rem; color: #060a12;"></i>
                 </div>
                 <h4 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.4rem;">VS NEURAL CORE v4</h4>
                 <p style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--primary-cyan); margin-bottom: 1.25rem;" id="chip-clock-display">Clock Frequency: 4.8 GHz (Turbo Active)</p>
                 <div style="background: rgba(255,255,255,0.06); border-radius: 9999px; height: 10px; width: 100%; overflow: hidden; margin-bottom: 0.75rem;">
                   <div style="width: 88%; height: 100%; background: var(--gradient-cyan); border-radius: 9999px; transition: width 0.4s ease;" id="chip-load-bar"></div>
                 </div>
-                <span style="font-size: 0.8rem; color: var(--text-muted);">Scroll to flip & disassemble 3D product layers</span>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Use slider above or scroll to explode 3D layers</span>
               </div>
             </div>
           </div>

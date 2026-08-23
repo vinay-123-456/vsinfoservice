@@ -1,6 +1,6 @@
 /* ==========================================================================
-   VS INFOSERVICE - Brew District 24 3D Continuous Flip & Particle Engine
-   100% Continuous Object Morphing, 3D Product Flip Physics & Particle Matrix
+   VS INFOSERVICE - Brew District 24 3D Continuous Flip & Exploded View Engine
+   Interactive Exploded View Telemetry & Scroll Morphing Physics
    ========================================================================== */
 
 (function () {
@@ -18,13 +18,14 @@
   // Lerped scroll progress state (0.0 to 1.0)
   let currentScrollProgress = 0;
   let targetScrollProgress = 0;
+  let manualExplodeFactor = null; // Interactive override slider factor
 
   const container = document.getElementById('webgl-container');
   if (!container) return;
 
   function init() {
     scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x060a12, 0.0012); // Deep Oceanic Obsidian
+    scene.fog = new THREE.FogExp2(0x060a12, 0.0012);
 
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(0, 0, 34);
@@ -36,19 +37,19 @@
     renderer.toneMappingExposure = 1.4;
     container.appendChild(renderer.domElement);
 
-    // Multi-Tone Kinetic Lighting
+    // Multi-Tone Lighting
     ambientLight = new THREE.AmbientLight(0xffffff, 0.85);
     scene.add(ambientLight);
 
-    pointLightCyan = new THREE.PointLight(0x00f2fe, 5.5, 130); // Neon Cyber Cyan
+    pointLightCyan = new THREE.PointLight(0x00f2fe, 5.5, 130);
     pointLightCyan.position.set(25, 20, 20);
     scene.add(pointLightCyan);
 
-    pointLightBlue = new THREE.PointLight(0x0066cc, 5.5, 130); // Brand Blue
+    pointLightBlue = new THREE.PointLight(0x0066cc, 5.5, 130);
     pointLightBlue.position.set(-25, -20, -10);
     scene.add(pointLightBlue);
 
-    pointLightEmerald = new THREE.PointLight(0x00ffaa, 4.5, 100); // Liquid Emerald
+    pointLightEmerald = new THREE.PointLight(0x00ffaa, 4.5, 100);
     pointLightEmerald.position.set(0, 25, -15);
     scene.add(pointLightEmerald);
 
@@ -67,7 +68,7 @@
   }
 
   /* --------------------------------------------------------------------------
-     1. Hero 3D Tech Hardware / SaaS Product Frame
+     1. Hero 3D SaaS / Hardware Enclosure Product
      -------------------------------------------------------------------------- */
   function createContinuousProduct() {
     heroProductMesh = new THREE.Group();
@@ -86,7 +87,7 @@
     const wireGeo = new THREE.WireframeGeometry(frameGeo);
     frame.add(new THREE.LineSegments(wireGeo, new THREE.LineBasicMaterial({ color: 0x00f2fe })));
 
-    // Internal Connected Layers (Brew District 24 Exploded Flip)
+    // Internal Connected Layers (3D Exploded View Physics)
     internalLayersGroup = new THREE.Group();
     const layerColors = [0x00f2fe, 0x0066cc, 0x00ffaa];
     for (let i = 0; i < 3; i++) {
@@ -111,7 +112,7 @@
   }
 
   /* --------------------------------------------------------------------------
-     2. Igloo Inc Particle Matrix (Splits & Re-assembles on Scroll)
+     2. Particle Matrix
      -------------------------------------------------------------------------- */
   function createParticleMatrix() {
     const count = 2000;
@@ -120,11 +121,11 @@
     const colors = new Float32Array(count * 3);
 
     const palette = [
-      new THREE.Color(0x00f2fe), // Cyber Cyan
-      new THREE.Color(0x0066cc), // Brand Blue
-      new THREE.Color(0x00ffaa), // Liquid Emerald
-      new THREE.Color(0x38bdf8), // Ice Blue
-      new THREE.Color(0xffffff)  // Pure White
+      new THREE.Color(0x00f2fe),
+      new THREE.Color(0x0066cc),
+      new THREE.Color(0x00ffaa),
+      new THREE.Color(0x38bdf8),
+      new THREE.Color(0xffffff)
     ];
 
     for (let i = 0; i < count * 3; i += 3) {
@@ -171,7 +172,18 @@
   }
 
   /* --------------------------------------------------------------------------
-     4. Event Handlers
+     4. Interactive Exploded View API Hooks
+     -------------------------------------------------------------------------- */
+  window.setExplodeFactor = function (val) {
+    manualExplodeFactor = parseFloat(val);
+  };
+
+  window.clearManualExplode = function () {
+    manualExplodeFactor = null;
+  };
+
+  /* --------------------------------------------------------------------------
+     5. Event Handlers & Animation Physics Loop
      -------------------------------------------------------------------------- */
   function onMouseMove(event) {
     targetMouseX = (event.clientX - window.innerWidth / 2) * 0.0006;
@@ -191,9 +203,6 @@
     renderer.setSize(window.innerWidth, window.innerHeight);
   }
 
-  /* --------------------------------------------------------------------------
-     5. Continuous Product Flip & Particle Disassembly Physics Loop
-     -------------------------------------------------------------------------- */
   function animate() {
     requestAnimationFrame(animate);
 
@@ -201,17 +210,16 @@
     mouseY += (targetMouseY - mouseY) * 0.05;
     currentScrollProgress += (targetScrollProgress - currentScrollProgress) * 0.06;
 
-    const p = currentScrollProgress; // 0.0 (top) -> 1.0 (bottom)
-    const morphFactor = Math.sin(p * Math.PI); // Peaks at middle scroll
+    const p = currentScrollProgress;
+    const scrollFactor = Math.sin(p * Math.PI);
+    const morphFactor = (manualExplodeFactor !== null) ? manualExplodeFactor : scrollFactor;
 
-    /* --- BREW DISTRICT 24 3D PRODUCT FLIP & IGLOO PARTICLE SPLIT PHYSICS --- */
+    /* --- 3D PRODUCT FLIP & EXPLODED LAYER PHYSICS --- */
     if (heroProductMesh) {
-      // 720° Product Flip Rotation
       heroProductMesh.rotation.x = (Math.PI / 6) + (p * Math.PI * 4);
       heroProductMesh.rotation.y = (Math.PI / 5) + (p * Math.PI * 6);
       heroProductMesh.rotation.z = Math.sin(p * Math.PI * 2) * 0.6;
 
-      // Trajectory flight across canvas
       const targetX = THREE.MathUtils.lerp(9, -9, Math.sin(p * Math.PI));
       const targetY = THREE.MathUtils.lerp(0, -2, Math.cos(p * Math.PI));
       const targetZ = THREE.MathUtils.lerp(0, 12, morphFactor);
@@ -224,12 +232,12 @@
     // Exploded Layer Disassembly
     if (internalLayersGroup) {
       internalLayersGroup.children.forEach((layer, idx) => {
-        layer.position.z = -idx * (2.5 + morphFactor * 5.0);
-        layer.rotation.z = idx * morphFactor * 0.5;
+        layer.position.z = -idx * (2.5 + morphFactor * 5.5);
+        layer.rotation.z = idx * morphFactor * 0.55;
       });
     }
 
-    // Particle Matrix Split & Magnetic Re-assembly
+    // Particle Matrix Disassembly & Re-assembly
     if (particleMatrix) {
       particleMatrix.rotation.y = p * Math.PI * 2.5 + (Date.now() * 0.0003);
       particleMatrix.scale.setScalar(1 + morphFactor * 0.7);
@@ -239,7 +247,6 @@
       waveGrid.position.z = (Date.now() * 0.002) % 4;
     }
 
-    // Camera Parallax
     camera.position.x = mouseX * 8;
     camera.position.y = -mouseY * 8;
     camera.lookAt(0, 0, 0);

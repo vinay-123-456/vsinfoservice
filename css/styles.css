@@ -1,6 +1,7 @@
 /* ==========================================================================
    VS INFOSERVICE - The Interactive Digital Canvas (Brew District 24 Style)
    Kinetic Typography, Continuous Object Morphing & 3D Product Flip Physics
+   Dedicated #explodedview Section & Live Telemetry Controls
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Syne:wght@700;800;900&display=swap');
@@ -117,7 +118,7 @@ html, body {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.8rem;
   list-style: none;
 }
 
@@ -126,7 +127,7 @@ html, body {
   text-decoration: none;
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   transition: var(--transition-smooth);
@@ -197,6 +198,21 @@ html, body {
 .btn-kinetic:hover .btn-icon-badge {
   transform: rotate(45deg) scale(1.1);
   background: rgba(6, 10, 18, 0.35);
+}
+
+/* --- Exploded View Telemetry Slider --- */
+.exploded-slider-container {
+  margin-top: 1.5rem;
+  background: rgba(10, 16, 29, 0.85);
+  border: 1px solid var(--border-glass);
+  padding: 1.25rem;
+  border-radius: 16px;
+}
+
+.exploded-range-input {
+  width: 100%;
+  accent-color: var(--primary-cyan);
+  cursor: pointer;
 }
 
 /* --- Spatial 3D Glass Cards --- */

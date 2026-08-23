@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
   initCustomCursor();
+  initExplodedSlider();
   initHeroSandbox();
   initChipOverclock();
   initProjectFilters();
@@ -40,7 +41,35 @@ function initCustomCursor() {
   animateCursor();
 }
 
-/* --- 2. Hero Interactive Tech Sandbox Tabs --- */
+/* --- 2. Live Interactive Exploded View Slider --- */
+function initExplodedSlider() {
+  const slider = document.getElementById('exploded-distance-slider');
+  const display = document.getElementById('exploded-percentage-display');
+  const resetBtn = document.getElementById('reset-exploded-btn');
+
+  if (!slider || !display) return;
+
+  slider.addEventListener('input', () => {
+    const val = parseFloat(slider.value);
+    const percentage = Math.round(val * 100);
+    display.textContent = `${percentage}% Exploded`;
+
+    if (typeof window.setExplodeFactor === 'function') {
+      window.setExplodeFactor(val);
+    }
+  });
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      display.textContent = 'Auto Scroll Sync';
+      if (typeof window.clearManualExplode === 'function') {
+        window.clearManualExplode();
+      }
+    });
+  }
+}
+
+/* --- 3. Hero Interactive Tech Sandbox Tabs --- */
 function initHeroSandbox() {
   const tabs = document.querySelectorAll('.sandbox-tab');
   const title = document.getElementById('sandbox-display-title');
@@ -89,7 +118,7 @@ function initHeroSandbox() {
   });
 }
 
-/* --- 3. 3D Product Flip Overclock Pulse Button --- */
+/* --- 4. 3D Product Flip Overclock Pulse Button --- */
 function initChipOverclock() {
   const btn = document.getElementById('chip-overclock-btn');
   const clockDisplay = document.getElementById('chip-clock-display');
@@ -110,7 +139,7 @@ function initChipOverclock() {
   });
 }
 
-/* --- 4. Portfolio Category Filter Pills --- */
+/* --- 5. Portfolio Category Filter Pills --- */
 function initProjectFilters() {
   const filterPills = document.querySelectorAll('.project-filter-pill');
   const projectCards = document.querySelectorAll('.project-card');
@@ -143,7 +172,7 @@ function initProjectFilters() {
   });
 }
 
-/* --- 5. Interactive Methodology Pipeline Timeline --- */
+/* --- 6. Interactive Methodology Pipeline Timeline --- */
 function initProcessPipeline() {
   const stepCards = document.querySelectorAll('.process-step-card');
   if (!stepCards.length) return;
@@ -169,7 +198,7 @@ function initProcessPipeline() {
   });
 }
 
-/* --- 6. Pricing Calculator Monthly / Annual Toggle --- */
+/* --- 7. Pricing Calculator Monthly / Annual Toggle --- */
 function initPricingToggle() {
   const toggle = document.getElementById('pricing-toggle-switch');
   const starterPrice = document.getElementById('price-starter');
@@ -188,7 +217,7 @@ function initPricingToggle() {
   });
 }
 
-/* --- 7. Live FAQ Search Filter --- */
+/* --- 8. Live FAQ Search Filter --- */
 function initFAQSearch() {
   const searchInput = document.getElementById('faq-search-input');
   const faqItems = document.querySelectorAll('.faq-item');
@@ -211,7 +240,7 @@ function initFAQSearch() {
   });
 }
 
-/* --- 8. FAQ Accordion Toggles --- */
+/* --- 9. FAQ Accordion Toggles --- */
 function initFAQAccordion() {
   const items = document.querySelectorAll('.faq-item');
   if (!items.length) return;
@@ -230,7 +259,7 @@ function initFAQAccordion() {
   });
 }
 
-/* --- 9. Contact Form AJAX Submission --- */
+/* --- 10. Contact Form AJAX Submission --- */
 function initContactForm() {
   const form = document.getElementById('contact-form');
   const statusMsg = document.getElementById('form-status-msg');
