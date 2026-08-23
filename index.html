@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VS INFOSERVICE | Modern Web & Mobile App Solutions</title>
+  <meta name="description" content="VS INFOSERVICE is a modern technology studio based in Mumbai, India. We craft custom web applications, mobile apps, e-commerce, and AI automation solutions curated with passion and cutting-edge tech.">
+  <meta name="keywords" content="VS Infoservice, Web Development, Mobile App Development, Businessbox, Digital Business Card, Vinay Shah, Software Company Mumbai">
+  <meta name="author" content="VS INFOSERVICE">
+
+  <!-- Open Graph Meta -->
+  <meta property="og:title" content="VS INFOSERVICE | Modern Digital Solutions">
+  <meta property="og:description" content="Modern solutions for growing your business with cutting-edge tech and digital experiences.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vsinfoservice.in/">
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://vsinfoservice.in/assets/img/favicon.png" type="image/png">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Custom Pointer Glow Dot -->
+  <div id="custom-cursor-dot" class="custom-cursor-dot"></div>
+
+  <!-- Three.js 3D WebGL Background Canvas -->
+  <div id="webgl-container"></div>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar" id="navbar">
+      <a href="#hero" class="navbar-brand">
+        <img src="assets/img/logo.png" alt="VS INFOSERVICE Logo" class="brand-logo-img" onerror="this.onerror=null; this.src='https://vsinfoservice.in/assets/img/logo.png';">
+        <span class="brand-name">VS <span class="gradient-text">INFOSERVICE</span></span>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#projects" class="nav-link">Featured Projects</a></li>
+        <li><a href="#team" class="nav-link">Team</a></li>
+        <li><a href="#faq" class="nav-link">F.A.Q</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="glassmorphism.html" class="nav-link" style="color: var(--primary-cyan); font-weight: 700;"><i class="bi bi-gem"></i> Glass Showcase</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 0.85rem;">
+        <!-- Theme Switcher (Light / Dark Mode Toggle) -->
+        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Light / Dark Mode">
+          <i class="bi bi-moon-stars-fill"></i>
+        </button>
+
+        <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Toggle navigation menu">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="hero" class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Hero Text Content -->
+          <div class="hero-content">
+            <div class="section-tag hero-badge">
+              <i class="bi bi-lightning-charge-fill"></i> INNOVATION & TECHNOLOGY STUDIO
+            </div>
+            
+            <h1 class="hero-title">
+              Engineering <span class="gradient-text">Next-Gen</span> Digital Experiences
+            </h1>
+            
+            <p class="hero-description">
+              We are a team of passionate designers and engineers crafting bespoke Web Platforms, Mobile Apps, and AI Automations curated with passion & cutting-edge technology.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-primary">
+                <span>View Featured Projects</span>
+                <i class="bi bi-arrow-right-short" style="font-size: 1.3rem;"></i>
+              </a>
+
+              <a href="glassmorphism.html" class="btn btn-secondary">
+                <i class="bi bi-gem"></i>
+                <span>Pure Glassmorphism View</span>
+              </a>
+
+              <a href="https://wa.me/919082357220" target="_blank" rel="noopener noreferrer" class="btn btn-glow">
+                <i class="bi bi-whatsapp"></i>
+                <span>WhatsApp Us</span>
+              </a>
+            </div>
+
+            <!-- Hero Stats Row -->
+            <div class="hero-stats-row" id="stats">
+              <div class="hero-stat-item">
+                <h4 class="stat-number" data-target="2">0</h4>
+                <p>Happy Clients</p>
+              </div>
+
+              <div class="hero-stat-item">
+                <h4 class="stat-number" data-target="6">0</h4>
+                <p>Projects Delivered</p>
+              </div>
+
+              <div class="hero-stat-item">
+                <h4 class="stat-number" data-target="100">0</h4>
+                <p>Hours of Support</p>
+              </div>
+
+              <div class="hero-stat-item">
+                <h4 class="stat-number" data-target="4">0</h4>
+                <p>Specialist Engineers</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Display Card -->
+          <div class="hero-stage-container">
+            <div class="hero-glass-card glass-panel" data-tilt>
+              <div>
+                <span class="section-tag" style="margin-bottom: 0.4rem;">
+                  <i class="bi bi-cpu"></i> DIGITAL INNOVATION
+                </span>
+                <h3 style="font-size: 1.3rem; margin-top: 0.3rem;">VS TECH ECOSYSTEM</h3>
+              </div>
+
+              <div class="hero-3d-graphic">
+                <div class="orb-graphic"></div>
+                <div class="floating-badge b1">
+                  <i class="bi bi-code-slash" style="color: var(--primary-cyan);"></i> Next.js / Web Architecture
+                </div>
+                <div class="floating-badge b2">
+                  <i class="bi bi-phone" style="color: var(--primary-pink);"></i> iOS & Android
+                </div>
+                <div class="floating-badge b3">
+                  <i class="bi bi-robot" style="color: var(--primary-emerald);"></i> AI & Automation
+                </div>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-glass); padding-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">
+                <span><i class="bi bi-shield-check" style="color: var(--primary-cyan);"></i> High Performance</span>
+                <span style="font-family: var(--font-mono); color: var(--primary-cyan);">v2.0 Active</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="about-grid">
+          
+          <div class="about-card-featured glass-panel" data-tilt>
+            <div class="section-tag"><i class="bi bi-person-workspace"></i> OUR IDENTITY</div>
+            <h2 style="font-size: 2.2rem; margin-bottom: 1.25rem;">Innovators, Problem-Solvers & Digital Creators</h2>
+            <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 1.5rem;">
+              At <strong>VS Infoservice</strong>, our mission lies in helping businesses—whether startups or established enterprises—thrive in the digital world. From custom website development to mobile app solutions and advanced tech integrations, we bring ideas to life with innovation and precision.
+            </p>
+            <p style="color: var(--text-muted); font-size: 1rem;">
+              Partner with us and take your business to the next level with technology that works for you.
+            </p>
+          </div>
+
+          <div>
+            <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem;">Why Forward-Thinking Businesses Choose VS INFOSERVICE</h3>
+            
+            <div class="about-highlights">
+              <div class="highlight-item clay-card">
+                <i class="bi bi-rocket-takeoff"></i>
+                <h4>Cutting-Edge Tech</h4>
+                <p>Built with modern web frameworks, fast APIs, and clean code.</p>
+              </div>
+
+              <div class="highlight-item clay-card">
+                <i class="bi bi-shield-lock"></i>
+                <h4>Enterprise Security</h4>
+                <p>Data protection, SSL encryption, and server redundancy.</p>
+              </div>
+
+              <div class="highlight-item clay-card">
+                <i class="bi bi-speedometer2"></i>
+                <h4>Lightning Speed</h4>
+                <p>Sub-second page loads optimized for high Google PageSpeed rankings.</p>
+              </div>
+
+              <div class="highlight-item clay-card">
+                <i class="bi bi-headset"></i>
+                <h4>24/7 Dedicated Support</h4>
+                <p>Ongoing maintenance, updates, and fast tech assistance.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SCROLL-DRIVEN ROTATING SHOWCASE ==================== -->
+    <section id="scroll-showcase" class="scroll-showcase-section">
+      <div class="container">
+        <div class="scroll-showcase-box glass-panel">
+          <div>
+            <div class="section-tag"><i class="bi bi-arrow-repeat"></i> SCROLL INTERACTION</div>
+            <h2 style="font-size: 2.2rem; margin-bottom: 1rem;">Interactive Device Motion</h2>
+            <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 1.5rem;">
+              As you scroll down the page, our interactive device model rotates seamlessly—facing straight when entering, rotating exactly <strong>180° opposite</strong> at screen center, and completing its full turn as you scroll past.
+            </p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <div style="padding: 0.75rem 1.25rem; border-radius: var(--radius-md); background: rgba(0, 180, 216, 0.1); border: 1px solid rgba(0, 180, 216, 0.25); color: var(--primary-cyan); font-weight: 600; font-size: 0.9rem;">
+                <i class="bi bi-phone-flip"></i> 180° Center Flip
+              </div>
+              <div style="padding: 0.75rem 1.25rem; border-radius: var(--radius-md); background: rgba(114, 9, 183, 0.1); border: 1px solid rgba(114, 9, 183, 0.25); color: var(--primary-purple); font-weight: 600; font-size: 0.9rem;">
+                <i class="bi bi-eye"></i> Smooth Scroll Math
+              </div>
+            </div>
+          </div>
+
+          <div class="scroll-interactive-stage">
+            <div class="scroll-rotating-device" id="scroll-rotating-device">
+              <i class="bi bi-device-ssd scroll-device-icon"></i>
+              <h4 style="font-size: 1.25rem; margin-bottom: 0.3rem;">VS DIGITAL CORE</h4>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Scroll to Rotate (180° at Center)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FEATURED PROJECTS SECTION ==================== -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><i class="bi bi-grid-1x2-fill"></i> PORTFOLIO SHOWCASE</div>
+          <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+          <p class="section-subtitle">Discover our flagship live solutions engineered for modern enterprises.</p>
+        </div>
+
+        <div class="projects-grid">
+          
+          <!-- Project 1: Businessbox -->
+          <div class="project-card glass-panel" data-tilt>
+            <div>
+              <div class="project-badge-live">
+                <span class="status-dot" style="width: 6px; height: 6px;"></span> LIVE PRODUCT
+              </div>
+              <h3 class="project-title">Businessbox</h3>
+              
+              <!-- Project Media Mockup Container -->
+              <div class="project-media-mockup">
+                <i class="bi bi-briefcase-fill"></i>
+                <span style="font-weight: 700; font-size: 1.05rem;">Businessbox All-in-One Suite</span>
+              </div>
+
+              <!-- Project Description -->
+              <div class="project-description-box">
+                <p style="margin-bottom: 0.5rem;"><strong style="color: var(--text-main);">All-in-One Digital Growth Suite</strong></p>
+                <p>
+                  Businessbox is a comprehensive digital management platform designed for growing businesses and startups. It unifies client CRM lead tracking, service catalog showcases, automated WhatsApp follow-ups, instant digital invoicing, and real-time business analytics into a single cloud dashboard.
+                </p>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; align-items: center;">
+              <a href="https://wa.me/919082357220?text=Hi%20VS%20Infoservice,%20I'm%20interested%20in%20Businessbox" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="flex: 1;">
+                <span>Explore Businessbox</span>
+                <i class="bi bi-box-arrow-up-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 2: Digital Business Card -->
+          <div class="project-card glass-panel" data-tilt>
+            <div>
+              <div class="project-badge-live">
+                <span class="status-dot" style="width: 6px; height: 6px;"></span> LIVE PRODUCT
+              </div>
+              <h3 class="project-title">Digital Business Card</h3>
+              
+              <!-- Project Media Mockup Container -->
+              <div class="project-media-mockup">
+                <i class="bi bi-person-badge-fill"></i>
+                <span style="font-weight: 700; font-size: 1.05rem;">NFC & QR Digital Contact Card</span>
+              </div>
+
+              <!-- Project Description -->
+              <div class="project-description-box">
+                <p style="margin-bottom: 0.5rem;"><strong style="color: var(--text-main);">Smart Contact & Profile Sharing Platform</strong></p>
+                <p>
+                  An eco-friendly, modern digital networking solution that enables executives, sales teams, and entrepreneurs to share contact cards, social handles, portfolios, and Google business reviews instantly via NFC tap, QR code scan, or custom Web URL.
+                </p>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; align-items: center;">
+              <a href="https://wa.me/919082357220?text=Hi%20VS%20Infoservice,%20I'm%20interested%20in%20Digital%20Business%20Card" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="flex: 1;">
+                <span>Get Digital Card</span>
+                <i class="bi bi-box-arrow-up-right"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SERVICES SECTION ==================== -->
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><i class="bi bi-layers-fill"></i> CORE CAPABILITIES</div>
+          <h2 class="section-title">Services Engineered For <span class="gradient-text">Growth</span></h2>
+          <p class="section-subtitle">Comprehensive technology solutions designed to elevate your brand presence and automate operations.</p>
+        </div>
+
+        <div class="services-grid">
+          
+          <div class="service-card glass-panel" data-tilt>
+            <div class="service-icon-wrapper">
+              <i class="bi bi-display"></i>
+            </div>
+            <div>
+              <h3 class="service-title">Custom Website & Web App Dev</h3>
+              <p class="service-description">Tailored, responsive, and high-performance websites for businesses of all sizes built with clean architecture.</p>
+            </div>
+            <ul class="service-features-list">
+              <li class="service-tag">Web Platforms</li>
+              <li class="service-tag">High SEO</li>
+              <li class="service-tag">Responsive</li>
+            </ul>
+          </div>
+
+          <div class="service-card glass-panel" data-tilt>
+            <div class="service-icon-wrapper">
+              <i class="bi bi-phone"></i>
+            </div>
+            <div>
+              <h3 class="service-title">Mobile App Solutions</h3>
+              <p class="service-description">Scalable, user-friendly iOS & Android apps designed for seamless experiences across devices.</p>
+            </div>
+            <ul class="service-features-list">
+              <li class="service-tag">iOS & Android</li>
+              <li class="service-tag">Cross Platform</li>
+              <li class="service-tag">Push Alerts</li>
+            </ul>
+          </div>
+
+          <div class="service-card glass-panel" data-tilt>
+            <div class="service-icon-wrapper">
+              <i class="bi bi-cart3"></i>
+            </div>
+            <div>
+              <h3 class="service-title">E-Commerce Solutions</h3>
+              <p class="service-description">Secure and efficient online stores with smooth payment integrations and order management.</p>
+            </div>
+            <ul class="service-features-list">
+              <li class="service-tag">Payment Integration</li>
+              <li class="service-tag">Online Stores</li>
+              <li class="service-tag">Security</li>
+            </ul>
+          </div>
+
+          <div class="service-card glass-panel" data-tilt>
+            <div class="service-icon-wrapper">
+              <i class="bi bi-robot"></i>
+            </div>
+            <div>
+              <h3 class="service-title">AI & Automation</h3>
+              <p class="service-description">Smart automation tools and custom software integrations designed to fit your unique business workflows.</p>
+            </div>
+            <ul class="service-features-list">
+              <li class="service-tag">Automation Tools</li>
+              <li class="service-tag">Custom Logic</li>
+              <li class="service-tag">Workflows</li>
+            </ul>
+          </div>
+
+          <div class="service-card glass-panel" data-tilt>
+            <div class="service-icon-wrapper">
+              <i class="bi bi-cloud-check"></i>
+            </div>
+            <div>
+              <h3 class="service-title">Cloud & Security</h3>
+              <p class="service-description">Reliable cloud solutions with top-tier security for data protection and uptime.</p>
+            </div>
+            <ul class="service-features-list">
+              <li class="service-tag">Cloud Setup</li>
+              <li class="service-tag">Data Protection</li>
+              <li class="service-tag">Backups</li>
+            </ul>
+          </div>
+
+          <div class="service-card glass-panel" data-tilt>
+            <div class="service-icon-wrapper">
+              <i class="bi bi-palette"></i>
+            </div>
+            <div>
+              <h3 class="service-title">UI/UX Design</h3>
+              <p class="service-description">Stunning, user-centric designs for intuitive and engaging digital experiences.</p>
+            </div>
+            <ul class="service-features-list">
+              <li class="service-tag">Glassmorphism</li>
+              <li class="service-tag">Claymorphism</li>
+              <li class="service-tag">UI Wireframes</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TEAM SECTION ==================== -->
+    <section id="team" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><i class="bi bi-people-fill"></i> LEADERSHIP TEAM</div>
+          <h2 class="section-title">Driven By <span class="gradient-text">Innovators</span></h2>
+          <p class="section-subtitle">Meet the hardworking team behind VS Infoservice.</p>
+        </div>
+
+        <div class="team-grid">
+          
+          <div class="team-card clay-card">
+            <div class="team-avatar-wrapper">
+              <img src="https://vsinfoservice.in/assets/img/team/vin.jpg" alt="Vinay Shah" class="team-avatar-img" onerror="this.src='https://ui-avatars.com/api/?name=Vinay+Shah&background=00b4d8&color=ffffff'">
+            </div>
+            <div class="team-role">FOUNDER & CEO</div>
+            <h3 class="team-name">VINAY SHAH</h3>
+            <p class="team-bio">
+              A visionary leader driving innovation, Vinay specializes in web, app, and automation solutions. His expertise and commitment to excellence empower businesses with smart, scalable, and future-ready technology.
+            </p>
+            <div class="team-socials">
+              <a href="#" class="social-icon-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="#" class="social-icon-btn" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+              <a href="mailto:info@vsinfoservice.in" class="social-icon-btn" aria-label="Email"><i class="bi bi-envelope"></i></a>
+            </div>
+          </div>
+
+          <div class="team-card clay-card">
+            <div class="team-avatar-wrapper">
+              <img src="https://vsinfoservice.in/assets/img/team/cto1.jpg" alt="Neha Chauhan" class="team-avatar-img" onerror="this.src='https://ui-avatars.com/api/?name=Neha+Chauhan&background=7209b7&color=ffffff'">
+            </div>
+            <div class="team-role">CO-FOUNDER</div>
+            <h3 class="team-name">NEHA CHAUHAN</h3>
+            <p class="team-bio">
+              Neha leads technology innovation with expertise in development and automation. She ensures cutting-edge, scalable, and efficient solutions that drive business success.
+            </p>
+            <div class="team-socials">
+              <a href="#" class="social-icon-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="#" class="social-icon-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="mailto:contact@vsinfoservice.in" class="social-icon-btn" aria-label="Email"><i class="bi bi-envelope"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ SECTION ==================== -->
+    <section id="faq" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><i class="bi bi-question-circle-fill"></i> FREQUENTLY ASKED QUESTIONS</div>
+          <h2 class="section-title">Everything You Need To <span class="gradient-text">Know</span></h2>
+          <p class="section-subtitle">Got questions? We've got clear answers for you.</p>
+        </div>
+
+        <div class="faq-container">
+          
+          <div class="faq-item glass-panel active">
+            <div class="faq-question">
+              <span>What services do you offer?</span>
+              <i class="bi bi-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+              We provide website development, mobile app solutions, e-commerce platforms, AI & automation, cloud security, SEO, digital marketing, UI/UX design, and custom software development.
+            </div>
+          </div>
+
+          <div class="faq-item glass-panel">
+            <div class="faq-question">
+              <span>How long does it take to develop a website or app?</span>
+              <i class="bi bi-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+              The timeline depends on the complexity of the project. A basic website may take 2–4 weeks, while a custom app could take 1–2 months. We ensure timely delivery without compromising quality.
+            </div>
+          </div>
+
+          <div class="faq-item glass-panel">
+            <div class="faq-question">
+              <span>Do you provide ongoing support and maintenance?</span>
+              <i class="bi bi-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+              Yes! We offer post-launch support, updates, and maintenance services to keep your website or app running smoothly.
+            </div>
+          </div>
+
+          <div class="faq-item glass-panel">
+            <div class="faq-question">
+              <span>Do you create custom solutions for specific business needs?</span>
+              <i class="bi bi-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+              Yes, we specialize in tailor-made software and technology solutions designed to fit your unique business requirements.
+            </div>
+          </div>
+
+          <div class="faq-item glass-panel">
+            <div class="faq-question">
+              <span>How do I get started with your services?</span>
+              <i class="bi bi-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+              Simply contact us! We’ll discuss your project, provide a proposal, and get started on bringing your vision to life.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><i class="bi bi-envelope-paper-fill"></i> GET IN TOUCH</div>
+          <h2 class="section-title">Let's Build Something <span class="gradient-text">Extraordinary</span></h2>
+          <p class="section-subtitle">Contact Us</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info-card glass-panel" data-tilt>
+            <div>
+              <span class="section-tag" style="margin-bottom: 1rem;"><i class="bi bi-geo-alt-fill"></i> HEADQUARTERS</span>
+              <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">VS INFOSERVICE</h3>
+              <p style="color: var(--text-muted);">Mumbai, Maharashtra, India - 400093</p>
+            </div>
+
+            <div class="info-box">
+              <div class="info-icon"><i class="bi bi-telephone-fill"></i></div>
+              <div class="info-text">
+                <h4>Call Us</h4>
+                <p>+91 90823 57220</p>
+              </div>
+            </div>
+
+            <div class="info-box">
+              <div class="info-icon"><i class="bi bi-envelope-fill"></i></div>
+              <div class="info-text">
+                <h4>Email Us</h4>
+                <p>info@vsinfoservice.in</p>
+                <p>contact@vsinfoservice.in</p>
+              </div>
+            </div>
+
+            <div class="info-box">
+              <div class="info-icon"><i class="bi bi-clock-fill"></i></div>
+              <div class="info-text">
+                <h4>Open Hours</h4>
+                <p>Monday - Friday: 9:00 AM - 7:00 PM</p>
+              </div>
+            </div>
+
+            <div>
+              <a href="https://wa.me/919082357220" target="_blank" rel="noopener noreferrer" class="btn btn-glow" style="width: 100%;">
+                <i class="bi bi-whatsapp"></i>
+                <span>Direct WhatsApp Chat</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-form-card glass-panel">
+            <form id="contact-form">
+              <div class="form-group">
+                <label class="form-label" for="form-name">Your Name</label>
+                <input type="text" id="form-name" name="name" class="form-input" placeholder="Your Name" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="form-email">Your Email</label>
+                <input type="email" id="form-email" name="email" class="form-input" placeholder="Your Email" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="form-subject">Subject</label>
+                <input type="text" id="form-subject" name="subject" class="form-input" placeholder="Subject" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="form-message">Message</label>
+                <textarea id="form-message" name="message" class="form-textarea" placeholder="Message" required></textarea>
+              </div>
+
+              <div id="form-status-message" style="display: none; margin-bottom: 1rem; font-weight: 500;"></div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                <i class="bi bi-send-fill"></i>
+                <span>Send Message</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#hero" class="navbar-brand" style="margin-bottom: 1rem;">
+            <img src="assets/img/logo.png" alt="VS INFOSERVICE Logo" class="brand-logo-img" onerror="this.onerror=null; this.src='https://vsinfoservice.in/assets/img/logo.png';">
+            <span class="brand-name">VS <span class="gradient-text">INFOSERVICE</span></span>
+          </a>
+          <p>
+            We offer modern solutions for growing your business curated with passion & cutting-edge technology.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Featured Projects</a></li>
+            <li><a href="glassmorphism.html">Glass Showcase</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Web Development</a></li>
+            <li><a href="#services">Mobile Apps</a></li>
+            <li><a href="#services">E-Commerce</a></li>
+            <li><a href="#services">AI & Automation</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <ul class="footer-links">
+            <li><a href="tel:+919082357220"><i class="bi bi-telephone"></i> +91 90823 57220</a></li>
+            <li><a href="mailto:info@vsinfoservice.in"><i class="bi bi-envelope"></i> info@vsinfoservice.in</a></li>
+            <li><a href="https://wa.me/919082357220" target="_blank" rel="noopener noreferrer"><i class="bi bi-whatsapp"></i> WhatsApp Chat</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; <span>2026</span> <strong>VS INFOSERVICE</strong>. All Rights Reserved.
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span class="status-dot"></span>
+          <span>All Systems Operational</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Custom Scripts -->
+  <script src="js/3d-scene.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
